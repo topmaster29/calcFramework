@@ -1,0 +1,31 @@
+{
+  "name": "calcframework",
+  "version": "0.0.1",
+  "description": "A paper framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "babel-node ./test/testHarness.js",
+    "start": "babel-node ./src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/topmaster29/calcFramework.git"
+  },
+  "keywords": [
+    "framework",
+    "training"
+  ],
+  "author": "Zarko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/topmaster29/calcFramework/issues"
+  },
+  "homepage": "https://github.com/topmaster29/calcFramework#readme",
+  "dependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.7",
+    "@babel/node": "^7.22.19",
+    "@babel/preset-env": "^7.23.8",
+    "prompt-sync": "^4.2.0"
+  }
+}
