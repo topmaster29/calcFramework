@@ -27,9 +27,20 @@ let namespacePrefix = `controllers.${baseFileName}.`;
 export const replaceCharacterWithCharacter = function (inputData, inputMetaData) {
     let functionName = replaceCharacterWithCharacter.name;
     console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+    console.log(`inputData is: ${inputData}`);
+    console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
 
-    
+    let returnData;
+    let character2Find = inputMetaData[0];
+    let character2Replace = inputMetaData[1];
+    if (!inputData && !character2Find && !character2Replace) {
+        returnData = false;
+    } else {
+        returnData = inputData.replace(character2Find, character2Replace);
+    }
 
+    console.log(`returnData is: ${returnData}`);
     console.log(`END ${namespacePrefix}${functionName} function`);
 
+    return returnData;
 };

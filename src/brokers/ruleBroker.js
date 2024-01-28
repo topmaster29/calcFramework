@@ -11,7 +11,6 @@
  */
 
 import * as rules from '../businessRules/rulesLibrary';
-import fileOperations from '../executrix/fileOperations';
 let D = require('../structures/data');
 let path = require('path');
 let baseFileName = path.basename(module.filename, path.extname(module.filename));

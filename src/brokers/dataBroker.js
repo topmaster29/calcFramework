@@ -30,8 +30,13 @@ function scanDataPath(dataPath) {
     let functionName = scanDataPath.name;
     // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
     // console.log(`dataPath is : ${dataPath}`);
-
-    let filesFound = fileOperations.readDirectoryContents(dataPath);
+    let rules = {};
+    let filesFound = [];
+    rules[0] = 'swapBackSlashToForwardSlash';
+    console.log(`execute business rules: ${JSON.stringify(rules)}`);
+    dataPath = ruleBroker.processRules(dataPath, '', rules);
+    console.log(`dataPath after business rules processing is: ${dataPath}`);
+    filesFound = fileOperations.readDirectoryContents(dataPath);
 
     // console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
     // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -113,7 +118,11 @@ function preprocessJsonFile(fileToLoad) {
     // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
     // console.log(`filesToLoad is : ${JSON.stringify(fileToLoad)}`);
 
-    let dataFile = fileOperations.getJsonData(fileToLoad);
+    let filePathRules = {};
+    filePathRules[0] = 'swapDoulbeForwardSlashToSingleForwardSlash';
+    console.log(`execute business rues: ${JSON.stringify(filePathRules)}`);
+    let finalFileToLoad = ruleBroker.processRules(fileToLoad, '', filePathRules)
+    let dataFile = fileOperations.getJsonData(finalFileToLoad);
 
     // console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
     // console.log(`END ${namespacePrefix}${functionName} function`);

@@ -4,6 +4,7 @@
  * @description Contains all teh funtions to manage the entire application framework at the highest level.
  * Also provides an interface to easily manage all the framework features & various functionality from a single entry point.
  * @requires module:chiefConfiguration
+ * @requires module:ruleBroker
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Zarko
  * @date 2024/01/24
@@ -11,6 +12,7 @@
  */
 
 let chiefConfiguration = require('./chiefConfiguration');
+let ruleBroker = require('../brokers/ruleBroker');
 let path = require('path');
 let baseFileName = path.basename(module.filename, path.extname(module.filename));
 let namespacePrefix = `controllers.${baseFileName}.`;
@@ -30,27 +32,12 @@ function processRootPath(configData) {
     // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
     // console.log(`configData is : ${JSON.stringify(configData)}`);
 
-    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    let rules = [];
+    rules[0] = 'parseSystemRootPath';
+    ruleBroker.bootStrapBusinessRules();
     let applicationName = configData['applicationName'];
     let pathToProcess = configData['rootPath'];
-    let resolvedPath = '';
-
-    let pathElements = pathToProcess.split('\\');
-    // console.log(`pathElements is: ${JSON.stringify(pathElements)}`);
-    loop1:
-        for (let i = 0; i < pathElements.length; i++) {
-            let pathElement = pathElements[i];
-            if (i === 0) {
-                resolvedPath = pathElement;
-            } else if (pathElement === applicationName) {
-                resolvedPath = resolvedPath + '\\' + pathElement + '\\';
-                break loop1;
-            } else {
-                resolvedPath = resolvedPath + '\\' + pathElement;
-            }
-        }
-    
-    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    let resolvedPath = ruleBroker.processRules(pathToProcess, applicationName, rules);
     let rootPath = path.resolve(resolvedPath);
     // console.log(`END ${namespacePrefix}${functionName} function`);
     return rootPath;
