@@ -28,13 +28,13 @@ let namespacePrefix = `brokers.${baseFileName}.`;
  */
 function scanDataPath(dataPath) {
     let functionName = scanDataPath.name;
-    console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-    console.log(`dataPath is : ${dataPath}`);
+    // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+    // console.log(`dataPath is : ${dataPath}`);
 
     let filesFound = fileOperations.readDirectoryContents(dataPath);
 
-    console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
-    console.log(`END ${namespacePrefix}${functionName} function`);
+    // console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
+    // console.log(`END ${namespacePrefix}${functionName} function`);
     return filesFound;
 };
 
@@ -50,9 +50,9 @@ function scanDataPath(dataPath) {
  */
 function loadAllJsonData(filesToLoad, contextName) {
     let functionName = loadAllJsonData.name;
-    console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-    console.log(`filesToLoad is : ${JSON.stringify(dataPath)}`);
-    console.log(`contextName is : ${contextName}`);
+    // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+    // console.log(`filesToLoad is : ${JSON.stringify(filesToLoad)}`);
+    // console.log(`contextName is : ${contextName}`);
 
     let foundSystemData = false;
     let systemConfigFileName = 'framework.system.json';
@@ -95,8 +95,8 @@ function loadAllJsonData(filesToLoad, contextName) {
         }
     }
     parsedDataFile = multiMergedData;
-    console.log(`parsedDataFile is: ${JSON.stringify(parsedDataFile)}`);
-    console.log(`END ${namespacePrefix}${functionName} function`);
+    // console.log(`parsedDataFile is: ${JSON.stringify(parsedDataFile)}`);
+    // console.log(`END ${namespacePrefix}${functionName} function`);
     return parsedDataFile;
 };
 
@@ -110,17 +110,17 @@ function loadAllJsonData(filesToLoad, contextName) {
  */
 function preprocessJsonFile(fileToLoad) {
     let functionName = loadAllJsonData.name;
-    console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-    console.log(`filesToLoad is : ${JSON.stringify(dataPath)}`);
+    // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+    // console.log(`filesToLoad is : ${JSON.stringify(fileToLoad)}`);
 
     let dataFile = fileOperations.getJsonData(fileToLoad);
 
-    console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
-    console.log(`END ${namespacePrefix}${functionName} function`);
+    // console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
+    // console.log(`END ${namespacePrefix}${functionName} function`);
     return dataFile;
 };
 
 module.exports = {
     ['scanDataPath']: (dataPath) => scanDataPath(dataPath),
-    ['loadAllJsonData']: (filesToLoad, contextName) => loadAllJsonData(filestoLoad, contextName)
+    ['loadAllJsonData']: (filesToLoad, contextName) => loadAllJsonData(filesToLoad, contextName)
 };

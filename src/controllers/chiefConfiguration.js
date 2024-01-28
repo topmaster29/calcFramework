@@ -1,6 +1,6 @@
 /**
- * @file chiefConfigration.js
- * @module chiefConfigration
+ * @file chiefConfiguration.js
+ * @module chiefConfiguration
  * @description Contains all the funtions to manage the configuration system.
  * such as adding, setup, parsing & processing.
  * @requires module:chiefData
@@ -28,9 +28,9 @@ let namespacePrefix = `application.${baseFileName}.`;
  */
 function setupConfiguration(appConfigPath, frameworkConfigPath) {
     let functionName = setupConfiguration.name;
-    console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-    console.log(`appConfigPath is : ${JSON.stringify(appConfigPath)}`);
-    console.log(`frmeworkConfigPath is : ${JSON.stringify(frameworkConfigPath)}`);
+    // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+    // console.log(`appConfigPath is : ${JSON.stringify(appConfigPath)}`);
+    // console.log(`frmeworkConfigPath is : ${JSON.stringify(frameworkConfigPath)}`);
     configurator.setConfigurationSetting('appConfigPath', appConfigPath);
     configurator.setConfigurationSetting('frameworkConfigPath', frameworkConfigPath);
     let allAppConfigData = {};
@@ -41,7 +41,11 @@ function setupConfiguration(appConfigPath, frameworkConfigPath) {
     // TODO: pareLoadedConfigurationData
     // NOTE: We cannot really propery implement the parseLoadedCOnfigurationData until we have a basic business rules system.
     // TODO: mere App Config Data & Framework Config Data
-    console.log(`allAppConfigData is: ${JSON.stringify(allAppConfigData)}`);
-    console.log(`allFrameworkConfigData is: ${JSON.stringify(allFrameworkConfigData)}`);
-    console.log(`END ${namespacePrefix}${functionName} function`);
+    // console.log(`allAppConfigData is: ${JSON.stringify(allAppConfigData)}`);
+    // console.log(`allFrameworkConfigData is: ${JSON.stringify(allFrameworkConfigData)}`);
+    // console.log(`END ${namespacePrefix}${functionName} function`);
 }
+
+module.exports = {
+    ['setupConfiguration']: (appConfigPath, frameworkConfigPath) => setupConfiguration(appConfigPath, frameworkConfigPath)
+};

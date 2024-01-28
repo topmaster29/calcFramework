@@ -28,9 +28,9 @@ let namespacePrefix = `controllers.${baseFileName}.`;
  */
 function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
     let functionName = setupAllJsonConfigData.name;
-    console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-    console.log(`dataPathConfigurationName is : ${dataPathConfigurationName}`);
-    console.log(`contextName is : ${contextName}`);
+    // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+    // console.log(`dataPathConfigurationName is : ${dataPathConfigurationName}`);
+    // console.log(`contextName is : ${contextName}`);
 
     let loadedAndMergedDataAllFiles = {};
     let dataPath = configurator.getConfigurationSetting(dataPathConfigurationName);
@@ -38,8 +38,9 @@ function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
     let filesToLoad = dataBroker.scanDataPath(dataPath, contextName);
     loadedAndMergedDataAllFiles = dataBroker.loadAllJsonData(filesToLoad, contextName);
 
-    console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergedDataAllFiles)}`);
-    console.log(`END ${namespacePrefix}${functionName} function`);
+    // console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergedDataAllFiles)}`);
+    // console.log(`END ${namespacePrefix}${functionName} function`);
+    return loadedAndMergedDataAllFiles;
 };
 
 module.exports = {

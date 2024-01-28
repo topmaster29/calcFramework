@@ -25,16 +25,16 @@ let namespacePrefix = `application.${baseFileName}.`;
  */
 function initFramework(clientConfiguration) {
     let functionName = initFramework.name;
-    console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-    console.log(`clientConfiguration is : ${JSON.stringify(clientConfiguration)}`);
+    // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+    // console.log(`clientConfiguration is : ${JSON.stringify(clientConfiguration)}`);
 
     let appRootPath = warden.processRootPath(clientConfiguration);
     clientConfiguration['appRootPath'] = appRootPath;
-    clientConfiguration['appConfigPath'] = appRootPath + clientConfiguration['appConfigreferencePath'];
+    clientConfiguration['appConfigPath'] = appRootPath + clientConfiguration['appConfigReferencePath'];
     clientConfiguration['frameworkConfigPath'] = __dirname + '//resources//configurations//';
     warden.initFrameworkSchema(clientConfiguration);
 
-    console.log(`END ${namespacePrefix}${functionName} function`);
+    // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
 module.exports = {

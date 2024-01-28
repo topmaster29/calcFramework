@@ -27,7 +27,7 @@ var namespacePrefix = `application.${baseFileName}`;
  */
 function bootstrapApplication() {
     let functionName = bootstrapApplication.name;
-    console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+    // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
     rootPath = path.resolve(process.cwd());
     let appConfig = {
         "applicationName": "testHarness",
@@ -35,7 +35,7 @@ function bootstrapApplication() {
         "appConfigReferencePath": "//test//resources//configuration//"
     };
     calcFramework.initFramework(appConfig);
-    console.log(`END ${namespacePrefix}${functionName} function`);
+    // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
 /**
@@ -47,28 +47,28 @@ function bootstrapApplication() {
  */
 function application() {
     let functionName = application.name;
-    console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+    // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
     let argumentDrivenInterface = false;
     let commandInput;
     let commandResult;
 
     if (argumentDrivenInterface === false) {
-        console.log('BEGIN main program loop');
-        console.log('BEGIN command parser');
+        // console.log('BEGIN main program loop');
+        // console.log('BEGIN command parser');
 
         while (programRunning === true) {
             commandInput = prompt('>');
 
             if (commandInput.toUpperCase().trim() === 'EXIT') {
-                console.log('END command parser');
+                // console.log('END command parser');
                 programRunning = false;
-                console.log('END main program loop');
-                console.log('Exitin TEST HARNESS APPLICATION');
+                // console.log('END main program loop');
+                // console.log('Exitin TEST HARNESS APPLICATION');
                 break;
             }
         }
     }
-    console.log(`END ${namespacePrefix}${functionName} function`);
+    // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
 var programRunning = false;
